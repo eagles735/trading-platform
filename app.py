@@ -1,18 +1,25 @@
-
 import streamlit as st
 import pandas as pd
 import datetime
 import time
-from config import ALPACA_API_KEY, ALPACA_SECRET_KEY
 from alpaca_trade_api.rest import REST
 
-#  Auto-refresh
+# ✅ Pull API keys from Streamlit Cloud
+ALPACA_API_KEY = st.secrets["ALPACA_API_KEY"]
+ALPACA_SECRET_KEY = st.secrets["ALPACA_SECRET_KEY"]
+
+# ✅ App Header
+st.title("✅ App is Running")
+st.write("This is a test message. Your RSI/MACD logic can go below.")
+
+# 🔁 Optional auto-refresh
 st.experimental_rerun = getattr(st, "experimental_rerun", lambda: None)
 time.sleep(60)
 st.experimental_rerun()
 
-#  Initialize Alpaca API
+# ✅ Initialize Alpaca API
 api = REST(ALPACA_API_KEY, ALPACA_SECRET_KEY, base_url="https://paper-api.alpaca.markets")
+
 
 #  RSI Function
 def get_rsi_from_alpaca(symbol, window=14):
