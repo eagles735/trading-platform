@@ -8,9 +8,10 @@ from alpaca_trade_api.rest import REST
 ALPACA_API_KEY = st.secrets["ALPACA_API_KEY"]
 ALPACA_SECRET_KEY = st.secrets["ALPACA_SECRET_KEY"]
 
-# ✅ App Header
-st.title("✅ App is Running")
-st.write("This is a test message. Your RSI/MACD logic can go below.")
+st.set_page_config(page_title="📈 Wall Street Dashboard", layout="wide")
+st.title("📈 Real-Time Trading Dashboard")
+st.write("Tracking stocks with RSI, MACD, VWAP, and crossover alerts.")
+
 
 # 🔁 Optional auto-refresh
 st.experimental_rerun = getattr(st, "experimental_rerun", lambda: None)
